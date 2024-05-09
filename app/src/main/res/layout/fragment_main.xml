@@ -1,0 +1,111 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.gpsdemo.MainActivity$PlaceholderFragment" >
+
+    <TextView
+        android:id="@+id/hello"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:textSize="20dp"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="5dp"
+        android:text="@string/hello_world" />
+
+    <Button
+        android:id="@+id/settings"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1.0"
+        android:layout_alignParentRight="true"
+        android:textSize="18sp"
+        android:text="Clear Logs" />
+
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_weight="1"
+        android:paddingTop="5dp"
+        android:background="@drawable/bg_textview_shape"
+        android:maxLines="50"
+        android:scrollbars="vertical"
+        android:gravity="top"
+        android:layout_below="@id/hello" />
+    <LinearLayout
+        android:id="@+id/btnLay1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginTop="8dp"
+        >
+        <Button
+            android:id="@+id/gpsStart"
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="match_parent"
+            android:text="GPS Start" />
+
+        <Button
+            android:id="@+id/networkStart"
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/gpsStart"
+            android:text="Network Start" />
+        <Button
+            android:id="@+id/passiveStart"
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/networkStart"
+            android:text="Passive Start" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnLay1"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        >
+        <Button
+            android:id="@+id/gpsStop"
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="match_parent"
+            android:layout_below="@id/gpsStart"
+            android:text="GPS Stop" />
+
+        <Button
+            android:id="@+id/networkStop"
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="match_parent"
+            android:layout_below="@id/networkStart"
+            android:layout_toRightOf="@id/gpsStop"
+            android:text="Network Stop" />
+
+        <Button
+            android:id="@+id/passiveStop"
+            android:layout_width="0dp"
+            android:layout_weight="0.33"
+            android:layout_height="match_parent"
+            android:layout_below="@id/networkStart"
+            android:layout_toRightOf="@id/networkStop"
+            android:text="Passive Stop" />
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

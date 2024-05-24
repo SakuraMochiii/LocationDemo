@@ -200,7 +200,7 @@ public class MainActivity extends Activity {
 
             // Returns a Location indicating the data from the last known location
             // fix obtained from the given provider.
-
+            TextViewUtil.infoBlueTextView(textView, "\t" + "Finished init.\n");
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
                     ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {   // TODO: Consider calling
                 //    ActivityCompat#requestPermissions
@@ -211,7 +211,10 @@ public class MainActivity extends Activity {
                 // for ActivityCompat#requestPermissions for more details.
                 mLocationManager.requestLocationUpdates(mode, 1000, 5, locationListener);
                 Location location = mLocationManager.getLastKnownLocation(mode);
+                TextViewUtil.infoBlueTextView(textView, "\t" + "Finished request location.\n");
                 return location;
+            } else {
+                TextViewUtil.infoRedTextView(textView, "\t" + "Need permission: ACCESS_FINE_LOCATION and ACCESS_COARSE_LOCATION.\n");
             }
             return null;
         }

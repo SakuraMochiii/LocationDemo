@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
             if (location != null)
                 TextViewUtil.infoBlueTextView(textView, "\t" + "Latitude:" + location.getLatitude() + "\nLongitude:" + location.getLongitude() + "\n");
             else
-                TextViewUtil.infoRedTextView(textView, "\t" + "Can't get the data!" + "\n");
+                TextViewUtil.infoRedTextView(textView, "\t" + "data not found." + "\n");
         }
 
         public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -66,14 +66,14 @@ public class MainActivity extends Activity {
             Button btn = (Button) v;
             if (btn.getId() == R.id.gpsStart) {
                 if (LocationUtils.isGpsEnabled(mContext)) {
-                    TextViewUtil.infoBlueTextView(textView, "\t" + "GPS Mode is worked!" + "\n");
+                    TextViewUtil.infoBlueTextView(textView, "\t" + "GPS Mode success!" + "\n");
                     mLocation = getLocation(LocationManager.GPS_PROVIDER);
                     if (mLocation != null)
-                        TextViewUtil.infoBlueTextView(textView, "\t" + "This is GPS Location!,\n" + "Latitude:" + mLocation.getLatitude() + "\nLongitude:" + mLocation.getLongitude() + "\n");
+                        TextViewUtil.infoBlueTextView(textView, "\t" + "GPS Location: \n" + "Latitude:" + mLocation.getLatitude() + "\nLongitude:" + mLocation.getLongitude() + "\n");
                     else
-                        TextViewUtil.infoRedTextView(textView, "\t" + "GPS Location! But can't get the data!" + "\n");
+                        TextViewUtil.infoRedTextView(textView, "\t" + "GPS Location request received, but data not found." + "\n");
                 } else {
-                    TextViewUtil.infoRedTextView(textView, "\t" + "GPS Mode is not worked!" + "\n");
+                    TextViewUtil.infoRedTextView(textView, "\t" + "GPS Mode fail" + "\n");
                 }
 
             } else if (btn.getId() == R.id.gpsStop || btn.getId() == R.id.networkStop || btn.getId() == R.id.passiveStop) {
@@ -83,25 +83,25 @@ public class MainActivity extends Activity {
                 TextViewUtil.infoBlueTextView(textView, "\t" + btn.getText() + "\n");
             } else if (btn.getId() == R.id.networkStart) {
                 if (LocationUtils.isNetworkAvailable(mContext) && LocationUtils.isNetworkEnabled(mContext)) {
-                    TextViewUtil.infoBlueTextView(textView, "\t" + "Network Mode is worked!" + "\n");
+                    TextViewUtil.infoBlueTextView(textView, "\t" + "Network Mode success!" + "\n");
                     mLocation = getLocation(LocationManager.NETWORK_PROVIDER);
                     if (mLocation != null)
-                        TextViewUtil.infoBlueTextView(textView, "\t" + "This is Network Location!,\n" + "Latitude:" + mLocation.getLatitude() + "\nLongitude:" + mLocation.getLongitude() + "\n");
+                        TextViewUtil.infoBlueTextView(textView, "\t" + "Network Location: \n" + "Latitude:" + mLocation.getLatitude() + "\nLongitude:" + mLocation.getLongitude() + "\n");
                     else
-                        TextViewUtil.infoRedTextView(textView, "\t" + "Network Location! But can't get the data!" + "\n");
+                        TextViewUtil.infoRedTextView(textView, "\t" + "Network Location request received, but data not found." + "\n");
                 } else {
-                    TextViewUtil.infoRedTextView(textView, "\t" + "Network Mode is not worked!" + "\n");
+                    TextViewUtil.infoRedTextView(textView, "\t" + "Network Mode fail" + "\n");
                 }
             } else if (btn.getId() == R.id.passiveStart) {
                 if (LocationUtils.isPassiveEnabled(mContext)) {
-                    TextViewUtil.infoBlueTextView(textView, "\t" + "Passive Mode is worked!" + "\n");
+                    TextViewUtil.infoBlueTextView(textView, "\t" + "Passive Mode success!" + "\n");
                     mLocation = getLocation(LocationManager.PASSIVE_PROVIDER);
                     if (mLocation != null)
-                        TextViewUtil.infoBlueTextView(textView, "\t" + "This is Passive Location!,\n" + "Latitude:" + mLocation.getLatitude() + "\nLongitude:" + mLocation.getLongitude() + "\n");
+                        TextViewUtil.infoBlueTextView(textView, "\t" + "Passive Location: \n" + "Latitude:" + mLocation.getLatitude() + "\nLongitude:" + mLocation.getLongitude() + "\n");
                     else
-                        TextViewUtil.infoRedTextView(textView, "\t" + "Passive Location! But can't get the data!" + "\n");
+                        TextViewUtil.infoRedTextView(textView, "\t" + "Passive Location request received, but data not found." + "\n");
                 } else {
-                    TextViewUtil.infoRedTextView(textView, "\t" + "Passive Mode is not worked!" + "\n");
+                    TextViewUtil.infoRedTextView(textView, "\t" + "Passive Mode fail" + "\n");
                 }
 
             } else if (btn.getId() == R.id.settings) {
@@ -127,7 +127,7 @@ public class MainActivity extends Activity {
 
         textView = (TextView) findViewById(R.id.text);
         gpsStart.setOnClickListener(btnClickListener);
-        gpsStop.setOnClickListener(btnClickListener); // 结束定位按钮
+        gpsStop.setOnClickListener(btnClickListener);
         networkStart.setOnClickListener(btnClickListener);
         passiveStart.setOnClickListener(btnClickListener);
         networkStop.setOnClickListener(btnClickListener);
@@ -173,10 +173,10 @@ public class MainActivity extends Activity {
         // Get the location manager
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         if (!mLocationManager.isProviderEnabled(mode)) {
-            textView.setText("\t" + mode + " not open !" + "\n");
+            textView.setText("\t" + mode + " not open." + "\n");
             return null;
         } else {
-            textView.setText("\t" + mode + " opened !" + "\n");
+            textView.setText("\t" + mode + " opened!" + "\n");
             // Find related services
             Criteria criteria = new Criteria();
 
